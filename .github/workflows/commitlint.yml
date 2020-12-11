@@ -9,7 +9,3 @@ jobs:
         with:
           fetch-depth: 0
       - uses: wagoid/commitlint-github-action@v2
-        with:
-          url: http://localhost:3000,
-          uploadArtifacts: true,
-          temporaryPublicStorage: true
