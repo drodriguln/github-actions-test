@@ -1,11 +1,22 @@
-name: UI Performance Test
-on: pull_request
+name: UI Performance Check
+on: [pull_request]
+
 jobs:
-  lighthouseci:
+  lighthouse-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-      - run: npm install && npm install -g @lhci/cli@0.6.x
+      - uses: actions/checkout@master
+      - run: mkdir /tmp/artifacts
+      - run: npm install
       - run: npm run build
-      - run: lhci autorun
+      - name: Run Lighthouse
+        uses: foo-software/lighthouse-check-action@master
+        with:
+          branch: ${{ github.ref }}
+          outputDirectory: /tmp/artifacts
+          sha: ${{ github.sha }}
+      - name: Upload artifacts
+        uses: actions/upload-artifact@master
+        with:
+          name: Lighthouse reports
+          path: /tmp/artifacts
