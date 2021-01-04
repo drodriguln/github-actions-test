@@ -8,7 +8,7 @@ module.exports = {
               ],
               'categories:accessibility': [
                   'error',
-                  { 'minScore': 0.8 },
+                  { 'minScore': 1.0 },
               ],
           }
         },
