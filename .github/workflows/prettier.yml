@@ -1,0 +1,16 @@
+name: Prettify Code
+
+on: push
+
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: creyD/prettier_action@v3.1
+        with:
+          prettier_options: --write src/**/*.{js,jsx,ts,tsx}
+          same_commit: true
+          only_changed: true
