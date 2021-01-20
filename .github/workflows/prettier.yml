@@ -11,6 +11,6 @@ jobs:
           fetch-depth: 0
       - uses: creyD/prettier_action@v3.1
         with:
-          prettier_options: --write **/*.{js,jsx,ts,tsx}
+          prettier_options: --write src/**/*.{js,jsx,ts,tsx}
           same_commit: true
           only_changed: true
